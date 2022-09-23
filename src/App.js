@@ -3,7 +3,7 @@ import io from 'socket.io-client'
 
 import './App.scss'
 
-const socket = io.connect('http://localhost:4000')
+const socket = io.connect('https://oleshko-chat-app.herokuapp.com/')
 
 export default function App() {
     const [name, setName] = useState('')
