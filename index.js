@@ -2,11 +2,14 @@
 const http = require('http')
 const express = require('express')
 const cors = require('cors')
+const dotenv = require('dotenv')
 const { Server } = require('socket.io')
 
 
 // constants
-const PORT = 4000
+dotenv.config()
+const PORT = process.env.PORT || 4000
+
 const app = express()
 app.use(cors())
 
@@ -37,5 +40,6 @@ io.on('connect', socket => {
 })
 
 
-// server
-server.listen(PORT, () => console.log(`Server started at ${PORT}`))
+// servers
+server.listen(PORT, () => console.log(`${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })} | [SERVER] Listening at ${PORT}`))
+app.get('/', (req, res) => res.end(`${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })} | [SERVER] Listening at ${PORT}`))
